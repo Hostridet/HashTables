@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/HashTables.h
+string
+/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/string
+
+/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/main.cpp
+iostream
+-
+HashTables.h
+/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/HashTables.h
+
