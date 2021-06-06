@@ -46,60 +46,52 @@ unsigned int HashTable::hashFunc1(Game &gaming)
     return addr;
 }
 
-unsigned int HashTable::hashFunc2(unsigned int addr, unsigned int i)
+unsigned int HashTable::hashFunc2(unsigned int addr)
 {
-    unsigned int addr2 = (addr + K + i) % Size;
+    unsigned int addr2 = (addr + K) % Size;
     return addr2;
 }
 
 int HashTable::add(Game &gaming)
 {
-    unsigned int addr = hashFunc1(gaming);
+    unsigned int addr2 = hashFunc1(gaming);
     for(int i = 0; i < Size; i++)
     {
-        unsigned int addr2 = hashFunc2(addr, i);
-        if (games[addr2].pos == 1 &
-            games[addr2].id == gaming.id &
-            games[addr2].creator == gaming.creator &
-            games[addr2].date == gaming.date &
-            games[addr2].genre == gaming.genre &
-            games[addr2].name == gaming.name)
-            return 1;
+        if(games[addr2].pos == 0)
+        {
+            gaming.pos = 1;
+            games[addr2] = gaming;
+            return 0;
+        }
         else
         {
-            if (games[addr2].pos == 2)
-            {
+            if(games[addr2].pos == 1 &&
+               games[addr2].name == gaming.name &&
+               games[addr2].date == gaming.date &&
+               games[addr2].creator == gaming.creator &&
+               games[addr2].genre == gaming.genre)
+                return 1;
+            if(games[addr2].pos == 2) {
                 unsigned int PrevAddr = addr2;
-                int k = 0;
                 while (games[addr2].pos == 2)
-                {
-                    addr2 = hashFunc2(addr, i + k);
-                    k++;
-                }
-                if (games[addr2].pos == 1 &
-                    games[addr2].id == gaming.id &&
-                    games[addr2].creator == gaming.creator &&
+                    addr2 = hashFunc2(addr2);
+                if (games[addr2].pos == 1 &&
+                    games[addr2].name == gaming.name &&
                     games[addr2].date == gaming.date &&
-                    games[addr2].genre == gaming.genre &&
-                    games[addr2].name == gaming.name)
+                    games[addr2].creator == gaming.creator &&
+                    games[addr2].genre == gaming.genre)
+                {
                     return 1;
-                if (games[addr2].pos == 0) {
-                    addr2 = PrevAddr;
-                    gaming.pos = 1;
-                    games[addr2] = gaming;
-                    return 0;
                 }
-            }
-            else
-            {
-                if (games[addr2].pos != 1)
+                else
                 {
                     gaming.pos = 1;
-                    games[addr2] = gaming;
+                    games[PrevAddr] = gaming;
                     return 0;
                 }
             }
         }
+        addr2 = hashFunc2(addr2);
     }
 
     return 1;
@@ -107,11 +99,10 @@ int HashTable::add(Game &gaming)
 
 int HashTable::del(Game &gaming)
 {
-    unsigned int addr = hashFunc1(gaming);
+    unsigned int addr2 = hashFunc1(gaming);
 
     for (int i = 0; i < Size; i++)
     {
-        unsigned int addr2 = hashFunc2(addr, i);
         if (games[addr2].pos == 0)
             return 1;
         if (games[addr2].pos == 1)
@@ -126,17 +117,17 @@ int HashTable::del(Game &gaming)
                 return 0;
             }
         }
+        addr2 = hashFunc2(addr2);
     }
     return 1;
 }
 
 bool HashTable::search(Game &gaming)
 {
-    unsigned int addr = hashFunc1(gaming);
+    unsigned int addr2 = hashFunc1(gaming);
 
     for (int i = 0; i < Size; i++)
     {
-        unsigned  int addr2 = hashFunc2(addr, i);
 
         if (games[addr2].pos == 0)
             return false;
@@ -151,6 +142,7 @@ bool HashTable::search(Game &gaming)
                 return true;
             }
         }
+        addr2 = hashFunc2(addr2);
     }
     return false;
 }
@@ -177,4 +169,3 @@ void HashTable::print()
         cout << "HashTable is empty" << endl;
     cout << "-----------------\n";
 }
-

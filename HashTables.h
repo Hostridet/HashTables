@@ -21,9 +21,9 @@ class HashTable
 private:
     int Size;
     Game *games;
-    unsigned int K = 3;
+    unsigned int K = 4;
     unsigned int hashFunc1(Game &gaming);
-    unsigned int hashFunc2(unsigned int addr,unsigned int i);
+    unsigned int hashFunc2(unsigned int addr);
 public:
     explicit HashTable(unsigned int Size = 10);
     ~HashTable();

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/HashTables.cpp" "/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/cmake-build-debug/CMakeFiles/LabHashTables.dir/HashTables.cpp.o"
-  "/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/main.cpp" "/cygdrive/c/Users/rumya/OneDrive/Документы/c++projects/LabHashTables/cmake-build-debug/CMakeFiles/LabHashTables.dir/main.cpp.o"
+  "/cygdrive/c/Users/rumya/Documents/MyProjectsCLione/HashTables/HashTables.cpp" "/cygdrive/c/Users/rumya/Documents/MyProjectsCLione/HashTables/cmake-build-debug/CMakeFiles/LabHashTables.dir/HashTables.cpp.o"
+  "/cygdrive/c/Users/rumya/Documents/MyProjectsCLione/HashTables/main.cpp" "/cygdrive/c/Users/rumya/Documents/MyProjectsCLione/HashTables/cmake-build-debug/CMakeFiles/LabHashTables.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
